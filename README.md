@@ -1,24 +1,8 @@
-# README
+# BATTLESHIP ONLINE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Dominique Goncalves - @dgonca
+Alan English - @alanenglish
+Brendan O'Handley - @bohandley
+Zack Taylor - @zacktaylor
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A Battleship web app for two players. 
