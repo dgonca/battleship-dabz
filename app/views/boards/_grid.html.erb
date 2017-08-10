@@ -10,7 +10,6 @@
         <th><%= letter  %></th>
          <% @board.grid.select do |coordinate, info| %>
           <% if coordinate.start_with?(letter) %>
-
             <td id="coord-<%= coordinate %>" class="<%= tile_class(coordinate, @board) %>"></td>
           <% end %>
         <% end %>
