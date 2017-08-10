@@ -6,10 +6,22 @@
   width: 30px;
   height: 30px;
   text-align: center;
-  color: #6B6B6B;
+  color: #000000;
 }
 
 .water {
   background-color: #7BA8ED;
+}
+
+.strike {
+  background-color: #BA0000;
+}
+
+.miss {
+  background-color: #ffffff;
+}
+
+.boat-piece {
+  background-color: #6B6B6B;
 }
 
