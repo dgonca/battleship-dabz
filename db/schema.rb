@@ -10,38 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809203414) do
+ActiveRecord::Schema.define(version: 20170810210935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "boards", force: :cascade do |t|
+    t.integer "game_id"
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer "board1_id"
-    t.integer "board2_id"
+    t.integer "creator_id"
     t.integer "winner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "ships", force: :cascade do |t|
-    t.integer "board_id"
-    t.integer "length"
+  create_table "ship_types", force: :cascade do |t|
     t.string "name"
+    t.integer "length"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ships", force: :cascade do |t|
+    t.integer "ship_type_id"
     t.string "start_point"
-    t.string "end_point"
+    t.string "orientation"
+    t.integer "board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "shots", force: :cascade do |t|
     t.string "coordinate"
-    t.integer "user_id"
     t.integer "board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
