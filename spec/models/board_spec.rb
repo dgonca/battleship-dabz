@@ -14,7 +14,6 @@ describe Board do
 
       it "after the board is saved, it does have a grid" do
         board.save
-        p board.errors
         expect(board.grid).to be_a Hash
       end
 
