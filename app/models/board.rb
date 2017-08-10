@@ -1,4 +1,9 @@
 class Board < ApplicationRecord
+  belongs_to  :player, class_name: "User"
+  belongs_to  :game
+  has_many  :ships
+  has_many  :shots
+
   attr_reader :grid, :x_axis_letters, :y_axis_numbers
   after_create :generate_board
 
