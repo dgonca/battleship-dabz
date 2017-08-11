@@ -15,4 +15,8 @@ module BoardHelper
     end
   end
 
+  def update_ship_on_board(params, ship_id, board)
+    params[ship_id.to_s]
+  end
+
 end
