@@ -6,9 +6,8 @@ class Board < ApplicationRecord
   accepts_nested_attributes_for :ships
 
   attr_reader :grid, :x_axis_letters, :y_axis_numbers
-  after_create :generate_board
+  after_initialize :generate_board
 
-  private
   def generate_board
     # Generates a board hash after the board object has been added to the database.
     @x_axis_letters = %w(a b c d e f g h i j)
@@ -23,11 +22,26 @@ class Board < ApplicationRecord
     end
   end
 
-  def add_to_grid(coordinates)
-    # Takes in coordinates and adds them to the boards grid.
-    self.grid[coordinates] = { hit?: false,
-                               boat?: false,
-                               }
+  # private
+  def add_to_grid(coordinate)
+    # Takes in coordinate and adds them to the boards grid.
+    self.grid[coordinate] = { hit?: hit?(coordinate),
+                              boat?: false,
+                              }
+  end
+
+  def hit?(check)
+    if hit_coordinates(check)
+      true
+    else
+      false
+    end
+  end
+
+  def hit_coordinates(check)
+    self.shots.find do |shot|
+      shot.coordinate == check
+    end
   end
 
 end
