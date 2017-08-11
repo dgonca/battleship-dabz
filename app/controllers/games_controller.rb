@@ -12,5 +12,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find_by(id: params[:id])
+    p @player1_board = Board.where(game_id: @game.id, player_id: 1)[0]
+    p @player2_board = Board.where(game_id: @game.id, player_id: 2)[0]
   end
 end
