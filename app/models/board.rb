@@ -5,7 +5,7 @@ class Board < ApplicationRecord
   has_many  :shots
 
   attr_reader :grid, :x_axis_letters, :y_axis_numbers
-  after_create :generate_board
+  after_initialize :generate_board
 
   private
   def generate_board
