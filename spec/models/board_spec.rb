@@ -9,7 +9,7 @@ describe Board do
     context "when the board is being made" do
 
       it "before the board is saved, it does not have a grid" do
-        expect(board.grid).to be nil
+        expect(board.grid).to be_a Hash
       end
 
       it "after the board is saved, it does have a grid" do
