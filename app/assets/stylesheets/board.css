@@ -1,3 +1,4 @@
+
 .board-grid-partial, th, td {
   border: 1px solid #BABA00;
 }
@@ -25,3 +26,6 @@
   background-color: #6B6B6B;
 }
 
+.board {
+  padding-bottom: 30px;
+}
