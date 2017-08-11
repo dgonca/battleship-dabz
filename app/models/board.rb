@@ -25,22 +25,32 @@ class Board < ApplicationRecord
   def add_to_grid(coordinate)
     # Takes in coordinate and adds them to the boards grid.
     self.grid[coordinate] = { hit?: hit?(coordinate),
-                              boat?: false,
+                              boat?: boat?(coordinate),
                               }
   end
 
   def hit?(check)
-    if hit_coordinates(check)
-      true
-    else
-      false
-    end
+    return true if hit_coordinates(check)
+    false
   end
 
   def hit_coordinates(check)
     self.shots.find do |shot|
       shot.coordinate == check
     end
+  end
+
+  def boat?(check)
+    return true if boat_coordinates(check).include?(check)
+    false
+  end
+
+  def boat_coordinates(check)
+    ship_coordinates = []
+    self.ships.each do |ship|
+      ship_coordinates << ship.all_coordinates
+    end
+  ship_coordinates.flatten
   end
 
 end
