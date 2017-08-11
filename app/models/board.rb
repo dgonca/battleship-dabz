@@ -7,7 +7,6 @@ class Board < ApplicationRecord
   attr_reader :grid, :x_axis_letters, :y_axis_numbers
   after_create :generate_board
 
-  private
   def generate_board
     # Generates a board hash after the board object has been added to the database.
     @x_axis_letters = %w(a b c d e f g h i j)
@@ -22,11 +21,32 @@ class Board < ApplicationRecord
     end
   end
 
-  def add_to_grid(coordinates)
-    # Takes in coordinates and adds them to the boards grid.
-    self.grid[coordinates] = { hit?: false,
+  # private
+  def add_to_grid(coordinate)
+    # Takes in coordinate and adds them to the boards grid.
+    self.grid[coordinate] = { hit?: hit?(coordinate),
                                boat?: false,
                                }
   end
 
+  def hit?(check)
+    all_shots = self.shots
+
+    hit_coordinates = all_shots.find do |shot|
+      shot.coordinate == check
+    end
+
+    if hit_coordinates
+      true
+    else
+      false
+    end
+
+  end
+
+  def boat?(coordinate)
+    self.ships.each do |ship|
+
+    end
+  end
 end
