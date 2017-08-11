@@ -1,9 +1,9 @@
 
 <%= render partial: "boards/grid", object: @board1, :locals => { :board => @board1 } %>
 
-<%= form_with(model: @board, url: "/games", :local => false) do |f| %>
+<%= form_with(model: @board1, url: "/games", method: "POST", :local => false) do |f| %>
 	Place Ships: 
-	<%= f.hidden_field_tag :board_id, :value => @board.id %>
+	<%= f.hidden_field :board_id, :value => @board1.id %>
 	<ul>
 		<% @ships1.each do |ship| %>	
 			<%= f.fields_for "ships[]", ship do |sf| %>

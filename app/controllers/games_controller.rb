@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
 	include ShipHelper
+  include BoardHelper
 
   def new
   	@opponent = User.find(2)
@@ -11,11 +12,11 @@ class GamesController < ApplicationController
 
     # we need before_action authenticate to disallow a
     # user who isn't signed in from accessing this URL
-    @game = Game.new(creator: current_user.id)
+    @game = Game.new(creator: current_user)
     if @game.save
-      render 'show'
-    else
       render 'new'
+    else
+      redirect_to "/"
     end
   end
 
@@ -27,8 +28,18 @@ class GamesController < ApplicationController
   end
 
 
-	def create 
-		
+	def create
+    @board = Board.find_by(id: params[:board][:board_id]) 
+    @board.ships.each do |ship|
+      info = update_ship_on_board(params[:board][:ships], ship.id, @board)
+      ship.start_point = info[:start_point]
+      ship.orientation = info[:orientation]
+      ship.save
+    end
+    redirect_to game_path(@board.game.id)
 	end
 
 end
+
+
+
