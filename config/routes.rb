@@ -15,9 +15,10 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: "users#show", as: 'user'
 
-  resources :boards do 
+  resources :boards do
     resources :shots
   end
+  
   resources :games
 
 
