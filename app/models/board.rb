@@ -3,6 +3,7 @@ class Board < ApplicationRecord
   belongs_to  :game
   has_many  :ships
   has_many  :shots
+  accepts_nested_attributes_for :ships
 
   attr_reader :grid, :x_axis_letters, :y_axis_numbers
   after_create :generate_board

@@ -1,5 +1,28 @@
-<%= render partial: "boards/grid", object: @board %>
 
-<% form_with(model: @game, object:) %>
+<%= render partial: "boards/grid", object: @board1, :locals => { :board => @board1 } %>
 
+<%= form_with(model: @board, url: "/games", :local => false) do |f| %>
+	Place Ships: 
+	<ul>
+		<%= f.fields_for :ships do |sf| %>
+			<% @ships1.each do |ship| %>	
+				<li> 
+					<%= ship.ship_type.name %>
+					<%= ship.ship_type.squares %>
+					<%= hidden_field_tag :ship_id, value: ship.id %>
+					<div class="field"> 
+						<%= sf.label :start_point %>
+						<%= sf.text_field :start_point %>
+					</div>
+					<div class="field">	
+						<%= sf.label :orientation %>
+						<%= sf.select :orientation, [['horizontal', 'horizontal'], ['vertical', 'vertical']] %>
+					</div>
+				</li>
+			<% end %>
+		<% end %>
+	</ul>
+	<div class="actions">
+		<%= submit_tag %>
+	</div>
 <% end %>

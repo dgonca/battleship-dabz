@@ -15,3 +15,5 @@ ShipType.create([
   {name: "Submarine", squares: 3},
   {name: "Patrol Boat", squares: 2}
   ])
+
+
