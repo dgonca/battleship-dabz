@@ -19,7 +19,6 @@ class Board < ApplicationRecord
         add_to_grid(x + y) # x + y will eval to: a1, b7 etc...
       end
     end
-    # boat?
   end
 
   # private
@@ -31,13 +30,11 @@ class Board < ApplicationRecord
   end
 
   def hit?(check)
-
     if hit_coordinates(check)
       true
     else
       false
     end
-
   end
 
   def hit_coordinates(check)
@@ -46,22 +43,4 @@ class Board < ApplicationRecord
     end
   end
 
-  # def boat?
-  #   # p self.ships.count
-  #   self.ships.each do |ship|
-  #     start = ship.start_point
-  #     offset = ship.ship_type.squares
-  #     orientation = ship.orientation
-  #
-  #     if orientation == "horizontal"
-  #       self.grid[start][:boat?] = true
-  #       coordinate = start.split("")
-  #       offset.times do
-  #         coordinate[1] = coordinate[1].to_i + 1
-  #         self.grid[coordinate.join][:boat?] = true
-  #       end
-  #
-  #     end
-  #   end
-  # end
 end
